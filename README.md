@@ -23,3 +23,9 @@
     ControlSocket=/tmp/agent.sock
     =====CONTEUDO FIM
 
+
+
+
+
+=========
+ZBX_SERVER_PORT=10051

@@ -2,26 +2,22 @@ services:
   app:
     hostname: ${ZBX_HOSTNAME}
     image: zabbix/zabbix-agent2:ubuntu-latest
-    #container_name: zabbix-agent2
     restart: unless-stopped
     network_mode: host
     environment:
       - ZBX_HOSTNAME=${ZBX_HOSTNAME}  # nome do host conforme cadastro no Zabbix
-      - ZBX_SERVER=${IP_ZBX_SERVER}        # para passivo (não obrigatório)
-      - ZBX_SERVER_ACTIVE=${IP_ZBX_SERVER_ACTIVE} # modo ativo (recomendado)
-    #command: ["sh", "-c", "mkdir -p /var/run/zabbix && chown zabbix:zabbix /var/run/zabbix && exec zabbix-agent2 -c /etc/zabbix/zabbix_agent2.conf"]
+      - ZBX_SERVER=${ZBX_SERVER}        # para passivo (não obrigatório)
+      - ZBX_SERVER_ACTIVE=${ZBX_SERVER_ACTIVE}
 
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run
       - /sys:/sys:ro
       - /proc:/proc
-      # Monte apenas arquivos específicos instead de /etc inteiro
       - /etc/os-release:/etc/os-release:ro
       - /etc/hostname:/etc/hostname:ro
       - /etc/machine-id:/etc/machine-id:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - ./zabbix_agent2.conf:/etc/zabbix/zabbix_agent2.conf:ro
-      #- /var/run/zabbix:/var/run/zabbix
 
 
