@@ -21,7 +21,7 @@ services:
       - /etc/hostname:/etc/hostname:ro
       - /etc/machine-id:/etc/machine-id:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - /srv/volumes/zabbix-agent2/zabbix_agent2.conf:/etc/zabbix/zabbix_agent2.conf:ro
+      - ./zabbix_agent2.conf:/etc/zabbix/zabbix_agent2.conf:ro
       #- /var/run/zabbix:/var/run/zabbix
 
 
